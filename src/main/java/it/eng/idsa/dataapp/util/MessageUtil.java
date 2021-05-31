@@ -5,9 +5,11 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Random;
 
 import org.apache.commons.io.IOUtils;
 import org.slf4j.Logger;
@@ -60,10 +62,30 @@ public class MessageUtil {
          jsonObject.put("firstName", "John");
          jsonObject.put("lastName", "Doe");
          jsonObject.put("dateOfBirth", formattedDate);
-         jsonObject.put("address", "591  Franklin Street, Pennsylvania");
+         jsonObject.put("address", "591  My Street, My Country");
+         jsonObject.put("email", "userId1@domine1.com");
          jsonObject.put("checksum", "ABC123 " + formattedDate);
+         
+         Random random = new Random();
+         int cons =random.nextInt(100 - 10) + 10;
+         jsonObject.put("mth_avg_cons",  cons + " kWh");
+         
+         Map<String, String> jsonObject2 = new HashMap<>();
+         jsonObject2.put("firstName", "Bill");
+         jsonObject2.put("lastName", "Doe");
+         jsonObject2.put("dateOfBirth", formattedDate);
+         jsonObject2.put("address", "592 My Street, My Country");
+         jsonObject2.put("email", "userId2@domine1.com");
+         jsonObject2.put("checksum", "ABC123 " + formattedDate);
+         
+         cons =random.nextInt(100 - 10) + 10;
+         jsonObject2.put("mth_avg_cons",  cons + " kWh");
+         
+         ArrayList< Map<String, String>> dataset = new ArrayList<>();
+         dataset.add(jsonObject2);
+         dataset.add(jsonObject);
          Gson gson = new GsonBuilder().create();
-         return gson.toJson(jsonObject);
+         return gson.toJson(dataset);
 	}
 	
 	private String createContractAgreement(Path dataLakeDirectory) {
