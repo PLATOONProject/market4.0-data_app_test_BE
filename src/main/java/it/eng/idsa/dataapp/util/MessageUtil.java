@@ -63,7 +63,7 @@ public class MessageUtil {
          jsonObject.put("lastName", "Doe");
          jsonObject.put("dateOfBirth", formattedDate);
          jsonObject.put("address", "591  My Street, My Country");
-         jsonObject.put("email", "userId1@domine1.com");
+         jsonObject.put("email", "user1@mail.it");
          jsonObject.put("checksum", "ABC123 " + formattedDate);
          
          Random random = new Random();
@@ -75,15 +75,27 @@ public class MessageUtil {
          jsonObject2.put("lastName", "Doe");
          jsonObject2.put("dateOfBirth", formattedDate);
          jsonObject2.put("address", "592 My Street, My Country");
-         jsonObject2.put("email", "userId2@domine1.com");
+         jsonObject2.put("email", "user2@mail.it");
          jsonObject2.put("checksum", "ABC123 " + formattedDate);
          
          cons =random.nextInt(100 - 10) + 10;
          jsonObject2.put("mth_avg_cons",  cons + " kWh");
          
+         Map<String, String> jsonObject3 = new HashMap<>();
+         jsonObject3.put("firstName", "Mario");
+         jsonObject3.put("lastName", "Rossi");
+         jsonObject3.put("dateOfBirth", formattedDate);
+         jsonObject3.put("address", "via Roma");
+         jsonObject3.put("email", "user3@mail.it");
+         jsonObject3.put("checksum", "ABC123 " + formattedDate);
+         
+         cons =random.nextInt(100 - 10) + 10;
+         jsonObject3.put("mth_avg_cons",  cons + " kWh");
+         
          ArrayList< Map<String, String>> dataset = new ArrayList<>();
          dataset.add(jsonObject2);
          dataset.add(jsonObject);
+         dataset.add(jsonObject3);
          Gson gson = new GsonBuilder().create();
          return gson.toJson(dataset);
 	}
