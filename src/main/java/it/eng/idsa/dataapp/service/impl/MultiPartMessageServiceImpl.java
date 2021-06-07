@@ -68,6 +68,9 @@ public class MultiPartMessageServiceImpl implements MultiPartMessageService {
 	
 	@Value("${information.model.version}")
 	private String informationModelVersion;
+	
+	@Value("${app.uri}")
+	private String appUri;
 
 	@Override
 	public String getHeader(String body) {
@@ -303,7 +306,7 @@ public class MultiPartMessageServiceImpl implements MultiPartMessageService {
 	@Override
 	public Message createResultMessage(Message header) {
 		return new ResultMessageBuilder()
-				._issuerConnector_(whoIAmEngRDProvider())
+				._issuerConnector_(whoIAm())
 				._issued_(DateUtil.now())
 				._modelVersion_(informationModelVersion)
 				._recipientConnector_(header != null ? asList(header.getIssuerConnector()) : asList(whoIAm()))
@@ -313,8 +316,11 @@ public class MultiPartMessageServiceImpl implements MultiPartMessageService {
 
 	@Override
 	public Message createArtifactResponseMessage(ArtifactRequestMessage header) {
+		
+		
+		
 		return new ArtifactResponseMessageBuilder()
-				._issuerConnector_(whoIAmEngRDProvider())
+				._issuerConnector_(whoIAm())
 				._issued_(DateUtil.now())
 				._modelVersion_(informationModelVersion)
 				._recipientConnector_(header != null ? asList(header.getIssuerConnector()) : asList(whoIAm()))
@@ -329,7 +335,7 @@ public class MultiPartMessageServiceImpl implements MultiPartMessageService {
 				._transferContract_(header.getTransferContract())
 				._correlationMessage_(header != null ? header.getId() : whoIAm())
 				._issued_(DateUtil.now())
-				._issuerConnector_(whoIAmEngRDProvider())
+				._issuerConnector_(whoIAm())
 				._recipientConnector_(Util.asList(header != null ? header.getIssuerConnector() : whoIAm()))
 				.build();
 	}
@@ -337,7 +343,7 @@ public class MultiPartMessageServiceImpl implements MultiPartMessageService {
 
 	public Message createRejectionMessage(Message header) {
 		return new RejectionMessageBuilder()
-				._issuerConnector_(whoIAmEngRDProvider())
+				._issuerConnector_(whoIAm())
 				._issued_(DateUtil.now())
 				._modelVersion_(informationModelVersion)
 				._recipientConnector_(header != null ? asList(header.getIssuerConnector()) : asList(whoIAm()))
@@ -348,7 +354,7 @@ public class MultiPartMessageServiceImpl implements MultiPartMessageService {
 
 	public Message createRejectionToken(Message header) {
 		return new RejectionMessageBuilder()
-				._issuerConnector_(whoIAmEngRDProvider())
+				._issuerConnector_(whoIAm())
 				._issued_(DateUtil.now())
 				._modelVersion_(informationModelVersion)
 				._recipientConnector_(header != null ? asList(header.getIssuerConnector()) : asList(whoIAm()))
@@ -358,18 +364,16 @@ public class MultiPartMessageServiceImpl implements MultiPartMessageService {
 	}
 
 	private URI whoIAm() {
-		return URI.create("auto-generated");
+		return URI.create(appUri);
 	}
 	
-	private URI whoIAmEngRDProvider() {
-		return URI.create("https://w3id.org/engrd/connector/provider");
-	}
+	
 	
 	private Message createProcessNotificationMessage(ContractAgreementMessage header) {
 		return new MessageProcessedNotificationMessageBuilder()
 				._issued_(DateUtil.now())
 				._modelVersion_(informationModelVersion)
-				._issuerConnector_(whoIAmEngRDProvider())
+				._issuerConnector_(whoIAm())
 				._recipientConnector_(header != null ? asList(header.getIssuerConnector()) : asList(whoIAm()))
 				._correlationMessage_(header != null ? header.getId() : whoIAm())
 				.build();
@@ -378,7 +382,7 @@ public class MultiPartMessageServiceImpl implements MultiPartMessageService {
 
 	public Message createRejectionMessageLocalIssues(Message header) {
 		return new RejectionMessageBuilder()
-				._issuerConnector_(whoIAmEngRDProvider())
+				._issuerConnector_(whoIAm())
 				._issued_(DateUtil.now())
 				._modelVersion_(informationModelVersion)
 				._recipientConnector_(header != null ? asList(header.getIssuerConnector()) : asList(whoIAm()))
@@ -389,7 +393,7 @@ public class MultiPartMessageServiceImpl implements MultiPartMessageService {
 
 	public Message createRejectionTokenLocalIssues(Message header) {
 		return new RejectionMessageBuilder()
-				._issuerConnector_(whoIAmEngRDProvider())
+				._issuerConnector_(whoIAm())
 				._issued_(DateUtil.now())
 				._modelVersion_(informationModelVersion)
 				._recipientConnector_(header != null ? asList(header.getIssuerConnector()) : asList(whoIAm()))
@@ -401,7 +405,7 @@ public class MultiPartMessageServiceImpl implements MultiPartMessageService {
 
 	public Message createRejectionCommunicationLocalIssues(Message header) {
 		return new RejectionMessageBuilder()
-				._issuerConnector_(whoIAmEngRDProvider())
+				._issuerConnector_(whoIAm())
 				._issued_(DateUtil.now())
 				._modelVersion_(informationModelVersion)
 				._recipientConnector_(header != null ? asList(header.getIssuerConnector()) : asList(whoIAm()))
