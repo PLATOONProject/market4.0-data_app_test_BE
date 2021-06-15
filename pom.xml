@@ -194,7 +194,7 @@
 					<exclude>dataFiles/**</exclude>
 					<exclude>test/**</exclude>
 					<exclude>examples-multipart-messages/**</exclude>
-					<exclude>*.jks</exclude>
+<!-- 					<exclude>*.jks</exclude>-->
 <!-- 					<exclude>*.properties</exclude> -->
 				</excludes>
 			</resource>
