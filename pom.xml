@@ -21,17 +21,17 @@
 		<start-class>it.eng.idsa.dataapp.ApplicationDataApp</start-class>
 		<information.model.version>4.0.0</information.model.version>
 		<websocket.message.streamer.version>1.0.10-SNAPSHOT</websocket.message.streamer.version>
-      	<multipart.message.processor.version>1.0.8-SNAPSHOT</multipart.message.processor.version>
+		<multipart.message.processor.version>1.0.8-SNAPSHOT</multipart.message.processor.version>
 	</properties>
-	
- 	<repositories> 
-		<repository> 
-			<id>snapshots</id> 
-			<name>maven-snapshots</name> 
-			<url>http://maven.iais.fraunhofer.de/artifactory/eis-ids-public</url> 
-		</repository> 
+
+	<repositories>
+		<repository>
+			<id>snapshots</id>
+			<name>maven-snapshots</name>
+			<url>http://maven.iais.fraunhofer.de/artifactory/eis-ids-public</url>
+		</repository>
 	</repositories>
-	
+
 	<dependencies>
 		<dependency>
 			<groupId>org.apache.maven</groupId>
@@ -75,7 +75,7 @@
 			<artifactId>springfox-swagger-ui</artifactId>
 			<version>2.9.2</version>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter</artifactId>
@@ -87,10 +87,10 @@
 			</exclusions>
 		</dependency>
 		<dependency>
-            <artifactId>logback-classic</artifactId>
-            <groupId>ch.qos.logback</groupId>
+			<artifactId>logback-classic</artifactId>
+			<groupId>ch.qos.logback</groupId>
 		</dependency>
-		
+
 		<!-- H2 database -->
 		<dependency>
 			<groupId>com.h2database</groupId>
@@ -108,7 +108,7 @@
 			<artifactId>infomodel-serializer</artifactId>
 			<version>${information.model.version}</version>
 		</dependency>
-		
+
 		<!-- it.eng.idsa -->
 		<dependency>
 			<groupId>it.eng.idsa</groupId>
@@ -120,13 +120,13 @@
 					<artifactId>multipart-message-processor</artifactId>
 				</exclusion>
 				<exclusion>
-		            <artifactId>logback-classic</artifactId>
-		            <groupId>ch.qos.logback</groupId>
-	          	</exclusion>
-	          	<exclusion>
-	                <artifactId>slf4j-simple</artifactId>
-	                <groupId>org.slf4j</groupId>
-              	</exclusion>
+					<artifactId>logback-classic</artifactId>
+					<groupId>ch.qos.logback</groupId>
+				</exclusion>
+				<exclusion>
+					<artifactId>slf4j-simple</artifactId>
+					<groupId>org.slf4j</groupId>
+				</exclusion>
 			</exclusions>
 		</dependency>
 		<dependency>
@@ -135,13 +135,13 @@
 			<version>${multipart.message.processor.version}</version>
 			<exclusions>
 				<exclusion>
-		            <artifactId>logback-classic</artifactId>
-		            <groupId>ch.qos.logback</groupId>
-		          </exclusion>
-		          <exclusion>
-		                <artifactId>slf4j-simple</artifactId>
-		                <groupId>org.slf4j</groupId>
-		            </exclusion>
+					<artifactId>logback-classic</artifactId>
+					<groupId>ch.qos.logback</groupId>
+				</exclusion>
+				<exclusion>
+					<artifactId>slf4j-simple</artifactId>
+					<groupId>org.slf4j</groupId>
+				</exclusion>
 			</exclusions>
 		</dependency>
 
@@ -153,12 +153,12 @@
 		<dependency>
 			<groupId>javax.validation</groupId>
 			<artifactId>validation-api</artifactId>
-			</dependency>
+		</dependency>
 
 		<dependency>
 			<groupId>org.apache.httpcomponents</groupId>
 			<artifactId>httpmime</artifactId>
-			</dependency>
+		</dependency>
 
 		<dependency>
 			<groupId>com.googlecode.json-simple</groupId>
@@ -194,8 +194,8 @@
 					<exclude>dataFiles/**</exclude>
 					<exclude>test/**</exclude>
 					<exclude>examples-multipart-messages/**</exclude>
-<!-- 					<exclude>*.jks</exclude>-->
-<!-- 					<exclude>*.properties</exclude> -->
+					<!-- <exclude>*.jks</exclude> -->
+					<!-- <exclude>*.properties</exclude> -->
 				</excludes>
 			</resource>
 		</resources>
